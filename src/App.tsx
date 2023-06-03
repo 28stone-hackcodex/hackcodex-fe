@@ -1,9 +1,12 @@
 import './App.css';
+import { Button } from 'antd';
 
 function App() {
   return (
     <>
-      <div>main page</div>
+      <div>
+        <Button type="primary">Button</Button>
+      </div>
     </>
   );
 }
