@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@vitejs/plugin-react": "^3.0.0",
+    "antd": "^5.5.2",
     "assert": "^2.0.0",
     "axios": "^0.27.2",
     "broadcast-channel": "^4.13.0",
@@ -73,6 +74,7 @@
     "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
+    "@vitejs/plugin-react-swc": "^3.0.0",
     "@vitest/coverage-istanbul": "^0.27.2",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.3",
@@ -104,7 +106,6 @@
     "vite": "^4.0.4",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-svgr": "^2.2.1",
-    "@vitejs/plugin-react-swc": "^3.0.0",
     "vitest": "^0.27.2"
   }
 }
