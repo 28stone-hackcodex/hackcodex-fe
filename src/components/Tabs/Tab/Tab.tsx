@@ -1,3 +1,6 @@
+import { Button } from 'antd';
+import styled from 'styled-components';
+
 interface Tab {
   name: string;
   tabId: number;
@@ -16,5 +19,11 @@ export const Tab = ({ name, tabId, selectedTabId, onSelectTabId }: Tab) => {
 
   const isTabSelected = tabId === selectedTabId;
 
-  return <h1 onClick={handleSelectTab}>{isTabSelected ? 'selected' : name}</h1>;
+  return (
+    <StyledButton type={isTabSelected ? 'primary' : 'ghost'} onClick={handleSelectTab}>
+      {name}
+    </StyledButton>
+  );
 };
+
+const StyledButton = styled(Button)``;
