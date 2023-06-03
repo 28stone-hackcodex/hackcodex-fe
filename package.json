@@ -6,8 +6,17 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "vite",
+    "prettier": "yarn prettier:check",
+    "prettier:check": "prettier --check {src,public}/**/*.{js,ts,jsx,tsx}",
+    "prettier:fix": "prettier --write {src,public}/**/*.{js,ts,jsx,tsx}",
+    "lint": "yarn lint:check --max-warnings 0",
+    "lint:check": "eslint {src,public}/**/*.{js,ts,jsx,tsx}",
+    "lint:fix": "eslint --fix {src,public}/**/*.{js,ts,jsx,tsx}",
+    "lint:nibble": "eslint-nibble {src,public}/**/*.{js,ts,jsx,tsx} --multi",
+    "tsc": "yarn tsc:check",
+    "tsc:check": "tsc --noEmit"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^3.0.0",
