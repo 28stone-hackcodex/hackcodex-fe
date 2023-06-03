@@ -2,17 +2,16 @@ import { Layout } from 'antd';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 import './App.css';
+import NavigationBar from './components/NavigationBar/NavigationBar';
 import { ProtectedComponent } from './components/ProtectedComponent';
 import { ROUTE_CONFIG } from './routes';
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 export const App = () => {
   return (
     <StyledLayout>
-      <StyledHeader>
-        <h1>Welcome to my App</h1>
-      </StyledHeader>
+      <NavigationBar />
       <StyledContent>
         <Router>
           <Routes>
@@ -22,7 +21,7 @@ export const App = () => {
           </Routes>
         </Router>
       </StyledContent>
-      <StyledFooter>© 2023 My App. All rights reserved.</StyledFooter>
+      <StyledFooter>© 2023 School picker 69 420. All rights reserved.</StyledFooter>
     </StyledLayout>
   );
 };
@@ -31,12 +30,6 @@ export default App;
 
 const StyledLayout = styled(Layout)`
   min-height: 100vh;
-`;
-
-const StyledHeader = styled(Header)`
-  background-color: #007bff;
-  color: #ffffff;
-  padding: 0 1rem;
 `;
 
 const StyledContent = styled(Content)`
