@@ -1,14 +1,20 @@
 import './App.css';
-import { Button } from 'antd';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { ProtectedComponent } from './components/ProtectedComponent';
+import { ROUTE_CONFIG } from './routes';
 
-function App() {
+export const App = () => {
   return (
-    <>
-      <div>
-        <Button type="primary">Button</Button>
-      </div>
-    </>
+    <div>
+      <Router>
+        <Routes>
+          {ROUTE_CONFIG.map(({ url, component }) => {
+            return <Route key={url} path={url} element={<ProtectedComponent component={component} />} />;
+          })}
+        </Routes>
+      </Router>
+    </div>
   );
-}
+};
 
 export default App;
