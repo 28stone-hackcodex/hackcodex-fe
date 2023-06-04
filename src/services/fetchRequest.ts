@@ -9,7 +9,9 @@ export const fetchAllSchoolsData = async (): Promise<AllSchoolData[]> => {
     }
 
     const data = await response.json();
-    return data;
+    return data.sort(function () {
+      return Math.random() - 0.5;
+    });
   } catch (error) {
     console.error('Error:', error);
     throw error;
