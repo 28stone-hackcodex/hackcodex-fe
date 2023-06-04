@@ -1,18 +1,26 @@
-import SchoolImage from '../assets/Placeholder_view_vector.png';
+import React, { useEffect, useState } from 'react';
 import { SchoolItem } from '../components/SchoolItem';
 import { fetchAllSchoolsData } from '../services/fetchRequest';
+import { AllSchoolData } from '@/types/AllSchoolType';
 
 const AllSchools = () => {
-  const data = fetchAllSchoolsData()
+  const [data, setData] = useState<AllSchoolData[]>([]);
 
-  console.log('data',data)
+  useEffect(() => {
+    const fetchData = async () => {
+      const fetchedData = fetchAllSchoolsData();
+      setData(fetchedData);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <section>
       <h1>All-Schools Page</h1>
-      <SchoolItem src={SchoolImage} />
-      <SchoolItem src={SchoolImage} />
-      <SchoolItem src={SchoolImage} />
+      {data.map((item, index) => (
+        <SchoolItem key={index} schoolData={item} />
+      ))}
     </section>
   );
 };

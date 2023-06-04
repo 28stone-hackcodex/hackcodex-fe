@@ -1,6 +1,7 @@
+import { AllSchoolData } from '@/types/AllSchoolType';
 import styled from 'styled-components';
 interface SchoolImage {
-  src: string;
+  schoolData: AllSchoolData;
 }
 
 export const SchoolItem = (props: SchoolImage) => {
@@ -16,7 +17,7 @@ export const SchoolItem = (props: SchoolImage) => {
           repellendus, alias sequi aut, non exercitationem earum?
         </StyledParagraph>
       </StyledContent>
-      <StyledImage src={props.src} />
+      <StyledImage src={props.schoolData.imageUrl} />
     </StyledSchoolItem>
   );
 };
