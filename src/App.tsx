@@ -47,7 +47,6 @@ const StyledContent = styled(Content)`
 `;
 
 const StyledFooter = styled(Footer)`
-  background-color: #f2f2f2;
   padding: 1rem;
   text-align: center;
 `;

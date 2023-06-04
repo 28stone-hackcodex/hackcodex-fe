@@ -1,10 +1,22 @@
+import { startTransition } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { StyledButton } from '../../StyledComponents/Buttons';
+import { Routes } from '../../routes';
+
 
 const NavigationBar = () => {
+  const navigate = useNavigate();
+
+  const handleNavigateToHomepage = () => {
+    startTransition(() => {
+      navigate(Routes.Home);
+    });
+  };
+
   return (
     <NavigationBarStyled>
-      <NavigationBarLogoStyled>Logo/name</NavigationBarLogoStyled>
+      <NavigationBarLogoStyled onClick={handleNavigateToHomepage}>Logo/name</NavigationBarLogoStyled>
       <NavigationBarButtonContainerStyled>
         <BlueButtonStyled>one</BlueButtonStyled>
         <StyledButton>Two</StyledButton>
