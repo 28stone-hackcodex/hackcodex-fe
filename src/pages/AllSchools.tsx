@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import SchoolImage from '../assets/Placeholder_view_vector.png';
 import { SchoolItem } from '../components/SchoolItem';
 import { fetchAllSchoolsData } from '../services/fetchRequest';
+import { AllSchoolData } from '@/types/AllSchoolType';
 
 const AllSchools = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<AllSchoolData[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const fetchedData = await fetchAllSchoolsData();
+      const fetchedData = fetchAllSchoolsData();
       setData(fetchedData);
     };
 
     fetchData();
   }, []);
 
-  console.log('data', data);
-
   return (
     <section>
       <h1>All-Schools Page</h1>
       {data.map((item, index) => (
-        <SchoolItem key={index} src={SchoolImage} />
+        <SchoolItem key={index} schoolData={item} />
       ))}
     </section>
   );
