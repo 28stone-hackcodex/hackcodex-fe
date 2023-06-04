@@ -5,6 +5,7 @@ import { StyledButton } from '../StyledComponents/Buttons';
 import { startTransition } from 'react';
 import { useNavigate } from 'react-router';
 import { Routes } from '../routes';
+import { Button } from 'antd';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -33,7 +34,9 @@ const Home = () => {
             <br />
             <br />
 
-            <BlueButtonStyled onClick={handleNavigateToSuggestion}>Find school</BlueButtonStyled>
+            <StyledSubmitButton onClick={handleNavigateToSuggestion} shape="default" size="large" type="primary">
+              Find school
+            </StyledSubmitButton>
           </HomepageContent>
         </HomepageContentStyled>
         <StyledImage src={HomepageImage} alt='Homepage image' />
@@ -60,6 +63,7 @@ const HomepageContentTitle = styled.div`
   line-height: 40px;
   margin: 50px 0 0;
   width: 85%;
+  padding-left: 50px;
 `;
 
 const HomepageContent = styled(HomepageContentTitle)`
@@ -94,4 +98,8 @@ const HomePageFooter = styled.div`
 const BlueButtonStyled = styled(StyledButton)`
   background-color:#1890FF;
   color:#FFFFFF;
+`;
+
+const StyledSubmitButton = styled(Button)`
+  margin-top: 25px;
 `;
