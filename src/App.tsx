@@ -13,10 +13,10 @@ const { Content, Footer } = Layout;
 export const App = () => {
   return (
     <Suspense fallback={<Loading />}>
-      <StyledLayout>
-        <NavigationBar />
-        <StyledContent>
-          <Router>
+      <Router>
+        <StyledLayout>
+          <NavigationBar />
+          <StyledContent>
             <Routes>
               {ROUTE_CONFIG.map(({ url, component, isAvailable }) => {
                 const isRouteAvailable = !isAvailable || isAvailable();
@@ -28,10 +28,10 @@ export const App = () => {
                 );
               })}
             </Routes>
-          </Router>
-        </StyledContent>
-        <StyledFooter>© 2023 School picker 69 420. All rights reserved.</StyledFooter>
-      </StyledLayout>
+          </StyledContent>
+          <StyledFooter>© 2023 School picker 69 420. All rights reserved.</StyledFooter>
+        </StyledLayout>
+      </Router>
     </Suspense>
   );
 };
