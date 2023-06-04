@@ -59,5 +59,7 @@ const StyledSubtitle = styled.div`
 `;
 
 const StyledParagraph = styled.div`
-  height: 70px;
+  height: 65px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
