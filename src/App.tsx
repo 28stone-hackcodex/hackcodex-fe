@@ -6,13 +6,13 @@ import { Suspense } from 'react';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import { ProtectedComponent } from './components/ProtectedComponent';
 import { ROUTE_CONFIG } from './routes';
-import { Loading } from './components/Loading';
+import { Loader } from './components/Loader/Loader';
 
 const { Content, Footer } = Layout;
 
 export const App = () => {
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<Loader />}>
       <Router>
         <StyledLayout>
           <NavigationBar />
