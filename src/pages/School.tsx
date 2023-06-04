@@ -1,47 +1,59 @@
 import { Routes } from '../routes';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import mapImage from '../../public/images/map.png';
 import { Review } from '../components/Review';
+import { AllSchoolData } from '@/types/AllSchoolType';
+import { useEffect, useState } from 'react';
+import { fetchSchoolData } from '../services/fetchRequest';
 
-interface School {
-  title: string;
-  location: string;
-  description: string;
-}
+const School = () => {
+  const [data, setData] = useState<AllSchoolData>();
+  const { id } = useParams<{ id: string }>();
 
-const School = ({ title, location, description }: School) => {
+  useEffect(() => {
+    if (!id) {
+      return;
+    }
+
+    const fetchData = async () => {
+      const fetchedData = await fetchSchoolData(Number(id));
+      setData(fetchedData);
+    };
+
+    fetchData();
+  }, []);
+
+  if (!data) {
+    return <h1>Sorry no data was found!</h1>;
+  }
+
   return (
     <StyledWrapper>
       <StyledBackButton to={Routes.AllSchools}>{`<- Go back to school list `}</StyledBackButton>
       <StyledInfoWrapper>
         <StyledInfoContent>
           <StyledSchoolInfo>
-            <StyledTitle>{title ?? 'School name'}</StyledTitle>
-            <StyledLocation>{location ?? '📍Ikšķiles iela 6, Rīga, Latvija, LV-1057'}</StyledLocation>
+            <StyledTitle>{data.schoolName}</StyledTitle>
+            <StyledLocation>{data.city}</StyledLocation>
           </StyledSchoolInfo>
-          <StyledDescription>
-            {description ??
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'}
-          </StyledDescription>
+          <StyledDescription>{data.description}</StyledDescription>
           <StyledContactPersonInfo>
             <StyledContactPersonTitle>Contact person</StyledContactPersonTitle>
             <StyledContactPersonContent>
               <StyledContactPersonAvatarWrapper>
-                <StyledContactPersonAvatar src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?cs=srgb&dl=pexels-simon-robben-614810.jpg&fm=jpg" />
+                <StyledContactPersonAvatar src={data.contactPerson.imageUrl} />
               </StyledContactPersonAvatarWrapper>
               <StyledPersonDetails>
-                <StyledPersonName>John Doe</StyledPersonName>
-                <StyledPersonNumber>📞 + 371 20000000</StyledPersonNumber>
+                <StyledPersonName>{data.contactPerson.fullName}</StyledPersonName>
+                <StyledPersonNumber>{data.contactPerson.phone}</StyledPersonNumber>
                 <StyledBookAppointmentButton>Book an appointment</StyledBookAppointmentButton>
               </StyledPersonDetails>
             </StyledContactPersonContent>
           </StyledContactPersonInfo>
         </StyledInfoContent>
         <StyledInfoImages>
-          <StyledInfoImage
-            src={'https://ichef.bbci.co.uk/news/976/cpsprodpb/0C22/production/_98860130_mediaitem98860129.jpg'}
-          />
+          <StyledInfoImage src={data.imageUrl} />
           <StyledInfoImage src={mapImage} />
         </StyledInfoImages>
       </StyledInfoWrapper>
@@ -80,9 +92,9 @@ const StyledSchoolInfo = styled.div``;
 const StyledTitle = styled.h1`
   font-weight: 400;
   font-size: 36px;
-  line-height: 22px;
   color: #000000;
   margin-bottom: 20px;
+  line-height: 1.1;
 `;
 
 const StyledLocation = styled.p`
@@ -90,7 +102,7 @@ const StyledLocation = styled.p`
   font-size: 13px;
   line-height: 131%;
   color: rgba(0, 0, 0, 0.45);
-  padding-bottom: 50px;
+  padding-bottom: 40px;
 `;
 
 const StyledDescription = styled.p`

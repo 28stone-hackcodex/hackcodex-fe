@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+interface Review {
+  image: string;
+  fullName: string;
+  time: string;
+  description: string;
+}
+
 export const Review = () => {
   return (
     <StyledWrapper>
