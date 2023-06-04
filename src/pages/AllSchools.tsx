@@ -22,12 +22,12 @@ const AllSchools = () => {
     setCurrentPage(page);
   };
 
-    const handlePageSizeChange = (current: number, size: number) => {
-      setCurrentPage(1); // Reset current page to 1
-      setPaginationItemCount(size);
-      console.log('current', current)
-      console.log('size',size)
-    };
+  const handlePageSizeChange = (current: number, size: number) => {
+    setCurrentPage(1); // Reset current page to 1
+    setPaginationItemCount(size);
+    console.log('current', current)
+    console.log('size', size)
+  };
 
   const startIndex = (currentPage - 1) * paginationItemCount;
   const endIndex = startIndex + paginationItemCount;
@@ -35,7 +35,7 @@ const AllSchools = () => {
 
   return (
     <section>
-      <h1>All-Schools Page</h1>
+      <h1>We've found 20+ schools in your area</h1>
       {paginatedData.map((item, index) => (
         <SchoolItem key={index} schoolData={item} />
       ))}

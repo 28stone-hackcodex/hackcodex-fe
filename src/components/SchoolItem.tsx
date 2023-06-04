@@ -8,13 +8,10 @@ export const SchoolItem = (props: SchoolImage) => {
   return (
     <StyledSchoolItem>
       <StyledContent>
-        <StyledTitle>Title</StyledTitle>
-        <StyledSubtitle>Subtitle</StyledSubtitle>
+        <StyledTitle>{props.schoolData.schoolName}</StyledTitle>
+        <StyledSubtitle>📍 {capitalize(props.schoolData.city)} | 📞 {props.schoolData.contactPerson.phone}</StyledSubtitle>
         <StyledParagraph>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero, dolorum ullam, architecto deserunt in officiis
-          quidem quod iste dolores cupiditate autem molestiae, labore magnam pariatur delectus? Saepe obcaecati
-          veritatis voluptatem ipsum dicta adipisci minima sint doloremque, modi at velit quam quidem asperiores rerum
-          repellendus, alias sequi aut, non exercitationem earum?
+          {props.schoolData.description}
         </StyledParagraph>
       </StyledContent>
       <StyledImage src={props.schoolData.imageUrl} />
@@ -64,3 +61,7 @@ const StyledParagraph = styled.div`
   text-overflow: ellipsis;
   overflow: hidden;
 `;
+
+function capitalize(word: string): string {
+  return word[0].toUpperCase() + word.slice(1).toLowerCase();
+}
