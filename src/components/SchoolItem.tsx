@@ -9,7 +9,7 @@ interface SchoolImage {
 }
 
 export const SchoolItem = (props: SchoolImage) => {
-  const activities = [
+  const defaultActivities = [
     'Swimming',
     'Maths',
     'Languages',
@@ -23,6 +23,9 @@ export const SchoolItem = (props: SchoolImage) => {
     'Social studies',
     'Chemistry',
   ];
+
+  const interests = sessionStorage.getItem("interests");
+  const activities = interests && JSON.parse(interests).length > 0 ? JSON.parse(interests) : defaultActivities;
 
   const navigate = useNavigate();
 
@@ -43,7 +46,7 @@ export const SchoolItem = (props: SchoolImage) => {
           {'$'.repeat(Math.random() * 5 + 1)}
         </StyledSubtitle>
         <StyledSubtitle>
-          {activities.filter(a => Math.random() * 5 <= 1).map(a => <Tag key={a}>{a}</Tag>)}
+          {activities.filter(a => Math.random() * 5 <= 4).map(a => <Tag key={a}>{a}</Tag>)}
         </StyledSubtitle>
         <StyledParagraph>
           {props.schoolData.description}
