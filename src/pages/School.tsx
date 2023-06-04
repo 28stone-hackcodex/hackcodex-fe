@@ -12,7 +12,7 @@ const School = () => {
   const [data, setData] = useState<AllSchoolData>();
   const { id } = useParams<{ id: string }>();
 
-  const activities = [
+  const defaultActivities = [
     'Swimming',
     'Maths',
     'Languages',
@@ -26,6 +26,9 @@ const School = () => {
     'Social studies',
     'Chemistry',
   ];
+
+  const interests = sessionStorage.getItem("interests");
+  const activities = interests ? JSON.parse(interests) : defaultActivities;
 
   useEffect(() => {
     if (!id) {

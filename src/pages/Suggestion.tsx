@@ -30,8 +30,11 @@ const Suggestion = () => {
 
   const valuesFromApi: string[] = [];
 
+  sessionStorage.removeItem("interests");
+
   const handleSelectCheckpoint = (checkedValues: CheckboxValueType[]) => {
     console.log(checkedValues);
+    sessionStorage.setItem("interests", JSON.stringify(checkedValues));
   };
 
   const navigate = useNavigate();
