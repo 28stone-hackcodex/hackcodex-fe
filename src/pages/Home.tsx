@@ -20,6 +20,9 @@ const Home = () => {
         </HomepageContentStyled>
         <StyledImage src={HomepageImage} alt='Homepage image' />
       </HomepageContentWrapperStyled>
+      <HomePageFooter>
+        Your child's education, our expertise.
+      </HomePageFooter>
     </div>
   );
 };
@@ -57,3 +60,15 @@ const StyledImage = styled.img`
   border-radius: 30% 0 0 30%;
   object-fit: cover;
 `;
+
+const HomePageFooter = styled.div`
+  height: 187px;
+  background-color: #F7F7F7;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 32px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 60px auto 0;
+`
