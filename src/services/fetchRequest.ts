@@ -2,7 +2,7 @@ import { AllSchoolData } from '../types/AllSchoolType';
 
 export const fetchAllSchoolsData = async (): Promise<AllSchoolData[]> => {
   try {
-    const response = await fetch('http://34.247.136.187/schools');
+    const response = await fetch('https://skolvedis-api.zheltishev.pro/schools');
 
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -18,7 +18,7 @@ export const fetchAllSchoolsData = async (): Promise<AllSchoolData[]> => {
 
 export const fetchSchoolData = async (id: number): Promise<AllSchoolData> => {
   try {
-    const response = await fetch(`http://34.247.136.187/schools/${id}`);
+    const response = await fetch(`https://skolvedis-api.zheltishev.pro/schools/${id}`);
 
     if (!response.ok) {
       throw new Error('Network response was not ok');
