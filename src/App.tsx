@@ -29,7 +29,7 @@ export const App = () => {
               })}
             </Routes>
           </StyledContent>
-          <StyledFooter>© 2023 Skolvedis. All rights reserved.</StyledFooter>
+          <StyledFooter>© 2023 skolvedis. All rights reserved.</StyledFooter>
         </StyledLayout>
       </Router>
     </Suspense>

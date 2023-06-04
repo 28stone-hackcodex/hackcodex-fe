@@ -19,8 +19,7 @@ export const Review = () => {
           <StyledTime>1 day ago</StyledTime>
         </StyledContentTop>
         <StyledDescription>
-          We supply a series of design principles, practical patterns and high quality design resources (Sketch and
-          Axure), to help people create their product prototypes beautifully and efficiently.
+          Our experience with this school has been exceptional. The teachers are highly dedicated and create a nurturing environment for the students. The curriculum is well-rounded, providing a good balance between academics, sports, and extracurricular activities. We appreciate the school's focus on individualized attention and the regular communication between teachers and parents. Our child has shown tremendous growth both academically and socially since joining school. We highly recommend it to any parent seeking a quality education for their child
         </StyledDescription>
       </StyledContent>
     </StyledWrapper>

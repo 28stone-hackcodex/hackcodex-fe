@@ -190,6 +190,7 @@ const StyledBookAppointmentButton = styled.button`
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
+  color: white;
   background-color: #1890ff;
   border: 1px solid #1890ff;
   box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);

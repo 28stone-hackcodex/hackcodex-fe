@@ -22,7 +22,7 @@ const Home = () => {
         <HomepageContentStyled>
           <HomepageContentTitle>Find a school that fits</HomepageContentTitle>
           <HomepageContent>
-            At EduConnect, we understand that choosing the right school for your child is a crucial decision that can shape their educational journey and future success.
+            At skolvedis, we understand that choosing the right school for your child is a crucial decision that can shape their educational journey and future success.
             <br />
             <br />
             That's why we've created a comprehensive online platform designed to support and guide parents like you through this important process.
