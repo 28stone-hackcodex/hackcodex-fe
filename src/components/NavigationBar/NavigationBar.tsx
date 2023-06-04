@@ -1,10 +1,23 @@
+import { startTransition } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { StyledButton } from '../../StyledComponents/Buttons';
 
+
 const NavigationBar = () => {
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    const pathToNavigate = '/'
+
+    startTransition(() => {
+      navigate(pathToNavigate);
+    });
+  };
+
   return (
     <NavigationBarStyled>
-      <NavigationBarLogoStyled>Logo/name</NavigationBarLogoStyled>
+      <NavigationBarLogoStyled onClick={handleButtonClick}>Logo/name</NavigationBarLogoStyled>
       <NavigationBarButtonContainerStyled>
         <BlueButtonStyled>one</BlueButtonStyled>
         <StyledButton>Two</StyledButton>

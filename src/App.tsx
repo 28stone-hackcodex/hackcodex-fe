@@ -10,19 +10,19 @@ const { Content, Footer } = Layout;
 
 export const App = () => {
   return (
-    <StyledLayout>
-      <NavigationBar />
-      <StyledContent>
-        <Router>
+    <Router>
+      <StyledLayout>
+        <NavigationBar />
+        <StyledContent>
           <Routes>
             {ROUTE_CONFIG.map(({ url, component }) => {
               return <Route key={url} path={url} element={<ProtectedComponent component={component} />} />;
             })}
           </Routes>
-        </Router>
-      </StyledContent>
-      <StyledFooter>© 2023 School picker 69 420. All rights reserved.</StyledFooter>
-    </StyledLayout>
+        </StyledContent>
+        <StyledFooter>© 2023 School picker 69 420. All rights reserved.</StyledFooter>
+      </StyledLayout>
+    </Router>
   );
 };
 
