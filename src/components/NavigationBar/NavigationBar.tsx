@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { StyledButton } from '../../StyledComponents/Buttons';
 import { Routes } from '../../routes';
+import { Image } from 'antd';
 
 
 const NavigationBar = () => {
@@ -16,10 +17,15 @@ const NavigationBar = () => {
 
   return (
     <NavigationBarStyled>
-      <NavigationBarLogoStyled onClick={handleNavigateToHomepage}>Logo/name</NavigationBarLogoStyled>
+      <NavigationBarLogoStyled onClick={handleNavigateToHomepage}>
+        <Image
+          width={200}
+          preview={false}
+          src="skolvedis_logo.png"
+        />
+      </NavigationBarLogoStyled>
       <NavigationBarButtonContainerStyled>
-        <BlueButtonStyled>one</BlueButtonStyled>
-        <StyledButton>Two</StyledButton>
+        {/* <StyledButton>Two</StyledButton> */}
       </NavigationBarButtonContainerStyled>
     </NavigationBarStyled>
   );
@@ -51,6 +57,4 @@ const NavigationBarButtonContainerStyled = styled.div`
   gap: 40px;
 `;
 
-const BlueButtonStyled = styled(StyledButton)`
-  background-color:#1890FF;
-`;
+

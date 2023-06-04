@@ -5,6 +5,10 @@ import logoTwo from '../../public/images/mykoob.png';
 import { Tabs } from '../components/Tabs/Tabs';
 import { Button, Checkbox } from 'antd';
 import { Typography } from 'antd';
+import { useNavigate } from 'react-router';
+import { startTransition } from 'react';
+import { Routes } from '../routes';
+import { CheckboxValueType } from 'antd/es/checkbox/Group';
 
 const { Title, Paragraph } = Typography;
 
@@ -26,8 +30,16 @@ const Suggestion = () => {
 
   const valuesFromApi: string[] = [];
 
-  const handleSelectCheckpoint = (value: string) => {
-    console.log(value);
+  const handleSelectCheckpoint = (checkedValues: CheckboxValueType[]) => {
+    console.log(checkedValues);
+  };
+
+  const navigate = useNavigate();
+
+  const handleNavigateToAllSchools = () => {
+    startTransition(() => {
+      navigate(Routes.AllSchools);
+    });
   };
 
   return (
@@ -46,14 +58,14 @@ const Suggestion = () => {
         </StyledTabsWrapper>
         <StyledParagraphs>Select child’s extracurricular activities</StyledParagraphs>
         <StyledRadiosWrapper>
-          <Checkbox.Group options={options} onChange={handleSelectCheckpoint} value={valuesFromApi} />
+          <Checkbox.Group options={options} onChange={handleSelectCheckpoint} />
         </StyledRadiosWrapper>
         <StyledParagraphs>State area you are located in</StyledParagraphs>
         <StyledSearchWrapper>
           <img src={locationIcon} alt="Location icon" />
           <StyledSearchInput type="text" placeholder="Please select" />
         </StyledSearchWrapper>
-        <StyledSubmitButton shape="default" size="large" type="primary">
+        <StyledSubmitButton onClick={handleNavigateToAllSchools} shape="default" size="large" type="primary">
           Generate Suggestions
         </StyledSubmitButton>
       </StyledInner>

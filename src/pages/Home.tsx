@@ -1,7 +1,20 @@
 import styled from 'styled-components';
 import HomepageImage from '../../public/homepage-image.jpg';
 
+import { StyledButton } from '../StyledComponents/Buttons';
+import { startTransition } from 'react';
+import { useNavigate } from 'react-router';
+import { Routes } from '../routes';
+
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleNavigateToSuggestion = () => {
+    startTransition(() => {
+      navigate(Routes.Suggestion);
+    });
+  };
+
   return (
     <div>
       <HomepageContentWrapperStyled>
@@ -16,6 +29,11 @@ const Home = () => {
             <br />
             <br />
             With our user-friendly platform, you'll gain access to a wealth of tools and features that will make the school selection process seamless and stress-free.
+
+            <br />
+            <br />
+
+            <BlueButtonStyled onClick={handleNavigateToSuggestion}>Find school</BlueButtonStyled>
           </HomepageContent>
         </HomepageContentStyled>
         <StyledImage src={HomepageImage} alt='Homepage image' />
@@ -72,3 +90,8 @@ const HomePageFooter = styled.div`
   align-items: center;
   margin: 60px auto 0;
 `
+
+const BlueButtonStyled = styled(StyledButton)`
+  background-color:#1890FF;
+  color:#FFFFFF;
+`;
