@@ -1,16 +1,17 @@
 import { AllSchoolData } from '../types/AllSchoolType';
 
-export const fetchAllSchoolsData = () => {
-  let result: AllSchoolData[] = [];
+export const fetchAllSchoolsData = async (): Promise<AllSchoolData[]> => {
+  try {
+    const response = await fetch('http://34.247.136.187/schools');
 
-  fetch('http://34.247.136.187/schools', { mode: 'no-cors' })
-    .then((response) => response.json())
-    .then((data) => {
-      result = data;
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
 
-  return result;
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
 };

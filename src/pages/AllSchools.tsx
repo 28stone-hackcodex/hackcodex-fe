@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { AllSchoolData } from '@/types/AllSchoolType';
+import { useEffect, useState } from 'react';
 import { SchoolItem } from '../components/SchoolItem';
 import { fetchAllSchoolsData } from '../services/fetchRequest';
-import { AllSchoolData } from '@/types/AllSchoolType';
 
 const AllSchools = () => {
   const [data, setData] = useState<AllSchoolData[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const fetchedData = fetchAllSchoolsData();
+      const fetchedData = await fetchAllSchoolsData();
       setData(fetchedData);
     };
 
