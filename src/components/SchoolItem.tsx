@@ -61,6 +61,7 @@ const StyledSchoolItem = styled.div`
   padding: 1.5em;
   margin: 1em;
   max-height: 250px;
+  cursor: pointer;
 `;
 
 const StyledContent = styled.div`
