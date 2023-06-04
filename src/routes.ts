@@ -17,7 +17,7 @@ export enum Routes {
 }
 
 // This can be modified later when we add login system.
-type IsAvailableFunction = () => boolean;
+type IsAvailableFunction = (data?: any) => boolean;
 
 interface RouteConfig {
   url: Routes;
