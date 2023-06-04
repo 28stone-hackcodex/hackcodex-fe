@@ -1,5 +1,8 @@
+import { Routes } from '../routes';
 import { AllSchoolData } from '@/types/AllSchoolType';
 import { Tag } from 'antd';
+import { startTransition } from 'react';
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 interface SchoolImage {
   schoolData: AllSchoolData;
@@ -21,8 +24,18 @@ export const SchoolItem = (props: SchoolImage) => {
     'Chemistry',
   ];
 
+  const navigate = useNavigate();
+
+
+  const handleOnSchoolItemClick = (id: number) => {
+    startTransition(() => {
+      navigate(`/all-schools/school/${id}`);
+    });
+
+  };
+
   return (
-    <StyledSchoolItem>
+    <StyledSchoolItem onClick={() => handleOnSchoolItemClick(props.schoolData.id)}>
       <StyledContent>
         <StyledTitle>{props.schoolData.schoolName}</StyledTitle>
         <StyledSubtitle>📍 {capitalize(props.schoolData.city)} | 📞 {props.schoolData.contactPerson.phone}</StyledSubtitle>
@@ -30,7 +43,7 @@ export const SchoolItem = (props: SchoolImage) => {
           {'$'.repeat(Math.random() * 5 + 1)}
         </StyledSubtitle>
         <StyledSubtitle>
-          {activities.filter(a => Math.random() * 5 <= 1).map(a => <Tag>{a}</Tag>)}
+          {activities.filter(a => Math.random() * 5 <= 1).map(a => <Tag key={a}>{a}</Tag>)}
         </StyledSubtitle>
         <StyledParagraph>
           {props.schoolData.description}
