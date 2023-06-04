@@ -1,15 +1,11 @@
 import SchoolImage from '../assets/Placeholder_view_vector.png';
 import { SchoolItem } from '../components/SchoolItem';
+import { fetchAllSchoolsData } from '../services/fetchRequest';
 
 const AllSchools = () => {
-  fetch('http://34.247.136.187/schools')
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
+  const data = fetchAllSchoolsData()
+
+  console.log('data',data)
 
   return (
     <section>
