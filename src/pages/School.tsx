@@ -6,10 +6,26 @@ import { Review } from '../components/Review';
 import { AllSchoolData } from '@/types/AllSchoolType';
 import { useEffect, useState } from 'react';
 import { fetchSchoolData } from '../services/fetchRequest';
+import { Tag } from 'antd';
 
 const School = () => {
   const [data, setData] = useState<AllSchoolData>();
   const { id } = useParams<{ id: string }>();
+
+  const activities = [
+    'Swimming',
+    'Maths',
+    'Languages',
+    'Debating',
+    'Design',
+    'Drama',
+    'Arts',
+    'IT',
+    'Agriculture',
+    'Architecture',
+    'Social studies',
+    'Chemistry',
+  ];
 
   useEffect(() => {
     if (!id) {
@@ -35,7 +51,13 @@ const School = () => {
         <StyledInfoContent>
           <StyledSchoolInfo>
             <StyledTitle>{data.schoolName}</StyledTitle>
-            <StyledLocation>{data.city}</StyledLocation>
+            <StyledSubtitle>📍 {capitalize(data.city)} | 📞 {data.contactPerson.phone}</StyledSubtitle>
+            <StyledSubtitle>
+              {'$'.repeat(Math.random() * 5 + 1)}
+            </StyledSubtitle>
+            <StyledSubtitle>
+              {activities.filter(a => Math.random() * 5 <= 1).map(a => <Tag key={a}>{a}</Tag>)}
+            </StyledSubtitle>
           </StyledSchoolInfo>
           <StyledDescription>{data.description}</StyledDescription>
           <StyledContactPersonInfo>
@@ -81,6 +103,7 @@ const StyledBackButton = styled(Link)`
 const StyledInfoWrapper = styled.div`
   display: flex;
   gap: 48px;
+  padding-left: 20px;
 `;
 
 const StyledInfoContent = styled.div`
@@ -180,7 +203,9 @@ const StyledInfoImage = styled.img`
   object-fit: cover;
 `;
 
-const StyledReviewsWrapper = styled.div``;
+const StyledReviewsWrapper = styled.div`
+  padding: 20px;
+`;
 
 const StyledReviewsTitle = styled.p`
   font-weight: 400;
@@ -189,6 +214,18 @@ const StyledReviewsTitle = styled.p`
   margin-bottom: 25px;
 `;
 
+const StyledSubtitle = styled.div`
+  font-size: 1rem;
+  font-weight: 400;
+  color: grey;
+  margin-bottom: 0.5rem;
+`;
+
 const StyledReviewsContent = styled.div``;
 
 export default School;
+
+function capitalize(word: string): string {
+  return word[0].toUpperCase() + word.slice(1).toLowerCase();
+}
+

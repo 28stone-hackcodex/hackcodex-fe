@@ -21,7 +21,7 @@ const NavigationBar = () => {
         <Image
           width={200}
           preview={false}
-          src="skolvedis_logo.png"
+          src="/skolvedis_logo.png"
         />
       </NavigationBarLogoStyled>
       <NavigationBarButtonContainerStyled>
@@ -47,6 +47,7 @@ const NavigationBarLogoStyled = styled.div`
   padding: 0 0 0 40px;
   display: flex;
   justify-content: flex-start;
+  cursor: pointer;
 `;
 
 const NavigationBarButtonContainerStyled = styled.div`
