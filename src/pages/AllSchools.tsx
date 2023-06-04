@@ -35,7 +35,7 @@ const AllSchools = () => {
 
   return (
     <section>
-      <h1>We've found 20+ schools in your area</h1>
+      <h1>We've found 20+ schools that match your criteria</h1>
       {paginatedData.map((item, index) => (
         <SchoolItem key={index} schoolData={item} />
       ))}
